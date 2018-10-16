@@ -53,7 +53,7 @@ type ProcessedPreference struct {
 type Challenge struct {
 	ValidMatch     bool
 	Round          int
-	MatchCode      string
+	MatchCode      rune
 	Challenger     *Team
 	ChallengerRank int
 	Defender       *Team
@@ -222,6 +222,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		if value != "" {
 			var challenge Challenge
 			challenge.Challenger = teams[value]
+			challenge.ChallengerRank = teams[value].Rank
 			challenge.Round = CurrentRound
 
 			pref := prefs[value]
@@ -277,6 +278,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		if value != "" {
 			var challenge Challenge
 			challenge.Challenger = teams[value]
+			challenge.ChallengerRank = teams[value].Rank
 			challenge.Round = CurrentRound
 
 			pref := prefs[value]
@@ -317,6 +319,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 			fmt.Println("Checking opponents for", value)
 			var challenge Challenge
 			challenge.Challenger = teams[value]
+			challenge.ChallengerRank = teams[value].Rank
 			challenge.Round = CurrentRound
 
 			for i := challenge.Challenger.Rank - 1; i > 0; i-- {
@@ -337,6 +340,37 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 					challenge.ValidMatch = false
 				}
 			}
+			if challenge.ValidMatch == true {
+				challenges[value] = &challenge
+			}
+		}
+	}
+
+	// Give MatchCodes accordingly
+
+	code := 'A'
+
+	for _, value := range sortedTeams {
+		if value != "" && challenges[value] != nil {
+			if challenges[value].ValidMatch == true {
+				challenges[value].MatchCode = code
+				code++
+				if code == 'I' {
+					code++
+				}
+			}
+		}
+	}
+
+	for _, value := range newTeams {
+		if value != "" && challenges[value] != nil {
+			if challenges[value].ValidMatch == true {
+				challenges[value].MatchCode = code
+				code++
+				if code == 'I' {
+					code++
+				}
+			}
 		}
 	}
 
@@ -352,9 +386,9 @@ func main() {
 	// resolve challenges based on teams and prefs
 	challenges := resolveChallenges(teams, prefs)
 
-	for _, value := range challenges {
-		if value.ValidMatch {
-			fmt.Println(value.Challenger.Name, "vs", value.Defender.Name)
+	for _, challenge := range challenges {
+		if challenge.ValidMatch {
+			fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger.Name, "vs", challenge.DefenderRank, "位", challenge.Defender.Name)
 		}
 	}
 }
