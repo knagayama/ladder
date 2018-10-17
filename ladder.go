@@ -91,6 +91,7 @@ func loadTeams() map[string]*Team {
 		teams[team.Name] = team
 	}
 
+	fmt.Println("Loaded teams:", len(teams))
 	return teams
 }
 
@@ -148,6 +149,7 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 
 		prefs[raw_pref.Team] = &pref
 	}
+	fmt.Println("Loaded prefs:", len(prefs))
 	return prefs
 }
 
@@ -279,7 +281,6 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		sortedTeams = append(sortedTeams, team)
 		descSortedTeams = append(descSortedTeams, team)
 	}
-	fmt.Println(descSortedTeams)
 
 	// 2. Give challenges to teams based on priorities
 
