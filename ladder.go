@@ -16,18 +16,19 @@ type Team struct {
 	Name     string `json:"team"`
 	Division string `json:"division"`
 	Taken    bool
+	TakenTwo bool
 	MAC      int
 }
 
 type RawPreference struct {
-	Team           string `json:"Team"`
-	Accept         string `json:"Accept"`
-	Challenge      string `json:"Challenge"`
-	PrevChallenged string `json:"PrevChallenged"`
-	LastResortPref string `json:"LastResortPref"`
-	First          string `json:"First"`
-	Second         string `json:"Second"`
-	Third          string `json:"Third"`
+	Team           string `json:"team"`
+	Accept         string `json:"accept"`
+	Challenge      string `json:"challenge"`
+	PrevChallenged string `json:"prev_challenged"`
+	LastResortPref string `json:"last_resort"`
+	First          string `json:"first"`
+	Second         string `json:"second"`
+	Third          string `json:"third"`
 }
 
 type LastResortChallenge int
@@ -122,6 +123,11 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 			pref.Accept = false
 		}
 
+		if pref.Accept == false {
+			teams[pref.Team.Name].Taken = true
+			teams[pref.Team.Name].TakenTwo = true
+		}
+
 		switch raw_pref.Challenge {
 		case "行う":
 			pref.Challenge = true
@@ -195,10 +201,65 @@ func getMaxRank(teams map[string]*Team, sortedTeams []string, challenge *Challen
 	}
 }
 
-func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPreference) map[string]*Challenge {
+func checkTaken(team string, teams map[string]*Team) bool {
+	// If not 1st, then just look at Taken
+	if teams[team] != nil {
+		if teams[team].Rank > 1 {
+			return teams[team].Taken
+		} else {
+			return teams[team].Taken && teams[team].TakenTwo
+		}
+	}
+	return true
+}
+
+func validMatch(challenger string, defender string, teams map[string]*Team, prefs map[string]*ProcessedPreference) bool {
+	// Do these teams exist?
+	if teams[challenger] == nil {
+		return false
+	}
+	if teams[defender] == nil {
+		return false
+	}
+	// Is the defender accepting matches?
+	if prefs[defender].Accept == false {
+		return false
+	}
+	// Did the challenger challenge defender in the previous round?
+	if prefs[challenger].PrevChallenged != nil {
+		if prefs[challenger].PrevChallenged.Name == teams[defender].Name {
+			return false
+		}
+	}
+	// Is the defender team taken?
+	if checkTaken(defender, teams) == true {
+		return false
+	}
+	return true
+}
+
+func takeTeam(challenger string, defender string, challenge *Challenge, teams map[string]*Team) {
+	challenge.Defender = teams[defender]
+	challenge.DefenderRank = teams[defender].Rank
+	challenge.ValidMatch = true
+
+	if teams[defender].Rank == 1 {
+		if teams[defender].Taken == false {
+			teams[defender].Taken = true
+		} else {
+			teams[defender].TakenTwo = true
+		}
+	} else {
+		teams[defender].Taken = true
+	}
+	fmt.Println("Challenge accepted: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+}
+
+func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPreference) (map[string]*Challenge, []string) {
 	challenges := make(map[string]*Challenge)
 
-	// 1. Give priorities to teams
+	// 1. Sort teams by priority
+
 	sortedTeams := make([]string, len(teams)+1)
 	var newTeams []string
 	var deferredTeams []string
@@ -218,35 +279,26 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 
 	// 2. Give challenges to teams based on priorities
 
-	for _, value := range descSortedTeams {
-		if value != "" {
+	for _, challenger := range descSortedTeams {
+		if challenger != "" {
 			var challenge Challenge
-			challenge.Challenger = teams[value]
-			challenge.ChallengerRank = teams[value].Rank
+			challenge.Challenger = teams[challenger]
+			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
-			pref := prefs[value]
+			pref := prefs[challenger]
 
-			if pref.First != "" && teams[pref.First].Taken == false {
-				challenge.Defender = teams[pref.First]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.First].Taken = true
-				fmt.Println("First preference available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
-			} else if pref.Second != "" && teams[pref.Second].Taken == false {
-				challenge.Defender = teams[pref.Second]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.Second].Taken = true
-				fmt.Println("Second preference available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
-			} else if pref.Third != "" && teams[pref.Third].Taken == false {
-				challenge.Defender = teams[pref.Third]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.Third].Taken = true
-				fmt.Println("Third preference available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+			if validMatch(challenger, pref.First, teams, prefs) {
+				fmt.Println("First preference available for", challenger)
+				takeTeam(challenger, pref.First, &challenge, teams)
+			} else if validMatch(challenger, pref.Second, teams, prefs) {
+				fmt.Println("Second preference vailable for", challenger)
+				takeTeam(challenger, pref.Second, &challenge, teams)
+			} else if validMatch(challenger, pref.Third, teams, prefs) {
+				fmt.Println("Third preference vailable for", challenger)
+				takeTeam(challenger, pref.Third, &challenge, teams)
 			} else {
-				fmt.Println("No preference available, checking last resort for", value)
+				fmt.Println("No preference available, checking last resort for", challenger)
 				// Check for max or min
 				switch pref.LastResortPref {
 				case None:
@@ -262,86 +314,73 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 					// Get the available challengeable team with maximum rank
 				case Any:
 					fmt.Println("Willing to challenge anyone.")
-					deferredTeams = append(deferredTeams, value)
+					deferredTeams = append(deferredTeams, challenger)
 				}
 			}
 
 			if challenge.ValidMatch == true {
-				challenges[value] = &challenge
+				challenges[challenger] = &challenge
 			}
 		}
 	}
 
 	// 3. Give challenges to new teams
 
-	for _, value := range newTeams {
-		if value != "" {
+	for _, challenger := range newTeams {
+		if challenger != "" {
 			var challenge Challenge
-			challenge.Challenger = teams[value]
-			challenge.ChallengerRank = teams[value].Rank
+			challenge.Challenger = teams[challenger]
+			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
-			pref := prefs[value]
+			pref := prefs[challenger]
 
-			if pref.First != "" && teams[pref.First].Taken == false {
-				challenge.Defender = teams[pref.First]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.First].Taken = true
-				fmt.Println("First preference available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Name)
-			} else if pref.Second != "" && teams[pref.Second].Taken == false {
-				challenge.Defender = teams[pref.Second]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.Second].Taken = true
-				fmt.Println("Second preference available: ", challenge.Challenger.Name, "vs", challenge.Defender.Name)
-			} else if pref.Third != "" && teams[pref.Third].Taken == false {
-				challenge.Defender = teams[pref.Third]
-				challenge.DefenderRank = challenge.Defender.Rank
-				challenge.ValidMatch = true
-				teams[pref.Third].Taken = true
-				fmt.Println("Third preference available: ", challenge.Challenger.Name, "vs", challenge.Defender.Name)
+			if validMatch(challenger, pref.First, teams, prefs) {
+				fmt.Println("First preference available for", challenger)
+				takeTeam(challenger, pref.First, &challenge, teams)
+			} else if validMatch(challenger, pref.Second, teams, prefs) {
+				fmt.Println("Second preference vailable for", challenger)
+				takeTeam(challenger, pref.Second, &challenge, teams)
+			} else if validMatch(challenger, pref.Third, teams, prefs) {
+				fmt.Println("Third preference vailable for", challenger)
+				takeTeam(challenger, pref.Third, &challenge, teams)
 			} else {
-				fmt.Println("No preference available, deferring for ", value)
-				deferredTeams = append(deferredTeams, value)
+				fmt.Println("No preference available, deferring for ", challenger)
+				deferredTeams = append(deferredTeams, challenger)
 			}
 
 			if challenge.ValidMatch == true {
-				challenges[value] = &challenge
+				challenges[challenger] = &challenge
 			}
 		}
 	}
 
 	// 4. Give challenges to deferred teams
 
-	for _, value := range deferredTeams {
-		if value != "" {
-			fmt.Println("Checking opponents for", value)
+	for _, challenger := range deferredTeams {
+		if challenger != "" {
+			fmt.Println("Checking opponents for", challenger)
 			var challenge Challenge
-			challenge.Challenger = teams[value]
-			challenge.ChallengerRank = teams[value].Rank
+			challenge.Challenger = teams[challenger]
+			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
 			for i := challenge.Challenger.Rank - 1; i > 0; i-- {
 				team := sortedTeams[i]
 				fmt.Println("Checking if the following team is good:", team)
-				if teams[team].Taken == true {
-					fmt.Println("Team is taken.")
-				} else if teams[team].Taken == false {
-					challenge.Defender = teams[team]
-					challenge.DefenderRank = challenge.Defender.Rank
-					challenge.ValidMatch = true
-					teams[team].Taken = true
-					fmt.Println("Available opponent found: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+				if validMatch(challenger, team, teams, prefs) == false {
+					fmt.Println("Invalid match.")
+				} else {
+					takeTeam(challenger, team, &challenge, teams)
 					break
 				}
 				if i == 1 {
-					fmt.Println("No valid match for", value)
+					fmt.Println("No valid match for", challenger)
 					challenge.ValidMatch = false
 				}
 			}
 			if challenge.ValidMatch == true {
-				challenges[value] = &challenge
+				challenges[challenger] = &challenge
 			}
 		}
 	}
@@ -374,7 +413,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		}
 	}
 
-	return challenges
+	return challenges, sortedTeams
 }
 
 func main() {
@@ -384,11 +423,14 @@ func main() {
 	prefs := loadPrefs(teams)
 
 	// resolve challenges based on teams and prefs
-	challenges := resolveChallenges(teams, prefs)
+	challenges, sortedTeams := resolveChallenges(teams, prefs)
 
-	for _, challenge := range challenges {
-		if challenge.ValidMatch {
-			fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger.Name, "vs", challenge.DefenderRank, "位", challenge.Defender.Name)
+	for _, challenger := range sortedTeams {
+		challenge := challenges[challenger]
+		if challenge != nil {
+			if challenge.ValidMatch {
+				fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger.Name, "vs", challenge.DefenderRank, "位", challenge.Defender.Name)
+			}
 		}
 	}
 }
