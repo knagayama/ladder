@@ -151,7 +151,7 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 	return prefs
 }
 
-func getMinRank(teams map[string]*Team, sortedTeams []string, challenge *Challenge) {
+func getMinRank(teams map[string]*Team, sortedTeams []string, prefs map[string]*ProcessedPreference, challenge *Challenge) {
 	challengerRank := challenge.Challenger.Rank
 	fmt.Println("Trying to find an opponent. Challenger rank is ", challengerRank)
 
@@ -163,20 +163,17 @@ func getMinRank(teams map[string]*Team, sortedTeams []string, challenge *Challen
 			challenge.ValidMatch = false
 			break
 		}
-		if teams[team].Taken == true {
-			fmt.Println("Team is taken.")
-		} else if teams[team].Taken == false {
-			challenge.Defender = teams[team]
-			challenge.DefenderRank = challenge.Defender.Rank
-			challenge.ValidMatch = true
-			teams[team].Taken = true
-			fmt.Println("Minimum rank opponent available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+		if validMatch(challenge.Challenger.Name, team, teams, prefs) == false {
+			fmt.Println("Invalid match.")
+		} else {
+			fmt.Println("Minimum rank opponent available.")
+			takeTeam(challenge.Challenger.Name, team, challenge, teams)
 			break
 		}
 	}
 }
 
-func getMaxRank(teams map[string]*Team, sortedTeams []string, challenge *Challenge) {
+func getMaxRank(teams map[string]*Team, sortedTeams []string, prefs map[string]*ProcessedPreference, challenge *Challenge) {
 	challengerRank := challenge.Challenger.Rank
 	fmt.Println("Trying to find an opponent. Challenger rank is ", challengerRank)
 
@@ -185,14 +182,11 @@ func getMaxRank(teams map[string]*Team, sortedTeams []string, challenge *Challen
 		fmt.Println("Checking if the following team is good:", team)
 		if teams[team].MAC < challengerRank {
 			fmt.Println("No, ranking too high")
-		} else if teams[team].Taken == true {
-			fmt.Println("Team is taken.")
-		} else if teams[team].Taken == false {
-			challenge.Defender = teams[team]
-			challenge.DefenderRank = challenge.Defender.Rank
-			challenge.ValidMatch = true
-			teams[team].Taken = true
-			fmt.Println("Maximum rank opponent available: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+		} else if validMatch(challenge.Challenger.Name, team, teams, prefs) == false {
+			fmt.Println("Invalid match.")
+		} else if validMatch(challenge.Challenger.Name, team, teams, prefs) == true {
+			fmt.Println("Maximum rank opponent available.")
+			takeTeam(challenge.Challenger.Name, team, challenge, teams)
 			break
 		} else if i == challengerRank+1 {
 			fmt.Println("No valid match for", challenge.Challenger.Name)
@@ -312,10 +306,10 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 				case MinRank:
 					// Get the available challengeable team with minimum rank
 					fmt.Println("Min rank opponent preferred.")
-					getMinRank(teams, sortedTeams, &challenge)
+					getMinRank(teams, sortedTeams, prefs, &challenge)
 				case MaxRank:
 					fmt.Println("Max rank opponent preferred.")
-					getMaxRank(teams, sortedTeams, &challenge)
+					getMaxRank(teams, sortedTeams, prefs, &challenge)
 					// Get the available challengeable team with maximum rank
 				case Any:
 					fmt.Println("Willing to challenge anyone.")
