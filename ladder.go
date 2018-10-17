@@ -235,6 +235,11 @@ func validMatch(challenger string, defender string, teams map[string]*Team, pref
 	if checkTaken(defender, teams) == true {
 		return false
 	}
+	// Is the defender's rank too high to be challenged?
+	if teams[defender].MAC < teams[challenger].Rank {
+		return false
+	}
+
 	return true
 }
 
