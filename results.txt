@@ -1,3 +1,4 @@
+[ ウデムシラバーズ 中本二郎 デカLINE デコ イカリアスタジオ OTO アマイイカ ドリサン商会 ミランドラproject たつのき スペースイカベーダー40TH eを取り返し隊 [Spee] KLaken セルシス イカ部 ぐのトゥーン freee アンド・シャイニング・ローーード！！ ハイカラSQ すまイカ マイナーウェポンズ（使うとは言ってない） Ajitoon デカLINE 前夜祭 都立道玄坂高校イカ部（仮） タコです わさわさー 結月ゆかりになりたい アルファベット  テスト]
 First preference available for ウデムシラバーズ
 Challenge accepted:  25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
 Second preference available for 中本二郎
@@ -159,6 +160,8 @@ First preference available for 結月ゆかりになりたい
 Challenge accepted:  2 位 結月ゆかりになりたい vs 1 位 アルファベット
 No preference available, checking last resort for アルファベット
 No valid match for  アルファベット
+First preference available for テスト
+Challenge accepted:  -1 位 テスト vs 25 位 ウデムシラバーズ
 6 A 2 位 結月ゆかりになりたい vs 1 位 アルファベット
 6 B 3 位 タコです わさわさー vs 1 位 アルファベット
 6 C 4 位 都立道玄坂高校イカ部（仮） vs 3 位 タコです わさわさー
@@ -179,3 +182,4 @@ No valid match for  アルファベット
 6 S 23 位 デカLINE デコ vs 22 位 イカリアスタジオ
 6 T 24 位 中本二郎 vs 21 位 OTO
 6 U 25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
+6 W -1 位 テスト vs 25 位 ウデムシラバーズ

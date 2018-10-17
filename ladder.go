@@ -275,11 +275,16 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		descSortedTeams[i] = value
 		i -= 1
 	}
+	for _, team := range newTeams {
+		sortedTeams = append(sortedTeams, team)
+		descSortedTeams = append(descSortedTeams, team)
+	}
+	fmt.Println(descSortedTeams)
 
 	// 2. Give challenges to teams based on priorities
 
 	for _, challenger := range descSortedTeams {
-		if challenger != "" {
+		if challenger != "" && prefs[challenger] != nil {
 			var challenge Challenge
 			challenge.Challenger = teams[challenger]
 			challenge.ChallengerRank = teams[challenger].Rank
@@ -323,38 +328,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		}
 	}
 
-	// 3. Give challenges to new teams
-
-	for _, challenger := range newTeams {
-		if challenger != "" {
-			var challenge Challenge
-			challenge.Challenger = teams[challenger]
-			challenge.ChallengerRank = teams[challenger].Rank
-			challenge.Round = CurrentRound
-
-			pref := prefs[challenger]
-
-			if validMatch(challenger, pref.First, teams, prefs) {
-				fmt.Println("First preference available for", challenger)
-				takeTeam(challenger, pref.First, &challenge, teams)
-			} else if validMatch(challenger, pref.Second, teams, prefs) {
-				fmt.Println("Second preference available for", challenger)
-				takeTeam(challenger, pref.Second, &challenge, teams)
-			} else if validMatch(challenger, pref.Third, teams, prefs) {
-				fmt.Println("Third preference available for", challenger)
-				takeTeam(challenger, pref.Third, &challenge, teams)
-			} else {
-				fmt.Println("No preference available, deferring for ", challenger)
-				deferredTeams = append(deferredTeams, challenger)
-			}
-
-			if challenge.ValidMatch == true {
-				challenges[challenger] = &challenge
-			}
-		}
-	}
-
-	// 4. Give challenges to deferred teams
+	// 3. Give challenges to deferred teams
 
 	for _, challenger := range deferredTeams {
 		if challenger != "" {
@@ -384,7 +358,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		}
 	}
 
-	// Give MatchCodes accordingly
+	// 4. Give MatchCodes accordingly
 
 	code := 'A'
 

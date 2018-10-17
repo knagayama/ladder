@@ -148,5 +148,11 @@
     "prev_rank": -1,
     "division": "A",
     "team": "ウデムシラバーズ"
-  }
+  },
+	{
+		"rank": -1,
+		"prev_rank": 0,
+		"division": "",
+		"team": "テスト"
+	}
 ]

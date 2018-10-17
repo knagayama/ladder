@@ -1,4 +1,13 @@
 [
+	{
+    "team": "テスト",
+    "accept": "受け付ける",
+    "challenge": "行う",
+    "current_rank": -1,
+    "prev_challenged": "",
+    "last_resort": "自分より上位のチームならどこでもいいからチャレンジする",
+    "first": "ウデムシラバーズ"
+	},
   {
     "team": "ウデムシラバーズ",
     "accept": "受け付ける",
