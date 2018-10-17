@@ -8,7 +8,7 @@ import (
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 3
+const CurrentRound = 6
 
 type Team struct {
 	Rank     int    `json:"rank"`
@@ -292,10 +292,10 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 				fmt.Println("First preference available for", challenger)
 				takeTeam(challenger, pref.First, &challenge, teams)
 			} else if validMatch(challenger, pref.Second, teams, prefs) {
-				fmt.Println("Second preference vailable for", challenger)
+				fmt.Println("Second preference available for", challenger)
 				takeTeam(challenger, pref.Second, &challenge, teams)
 			} else if validMatch(challenger, pref.Third, teams, prefs) {
-				fmt.Println("Third preference vailable for", challenger)
+				fmt.Println("Third preference available for", challenger)
 				takeTeam(challenger, pref.Third, &challenge, teams)
 			} else {
 				fmt.Println("No preference available, checking last resort for", challenger)
@@ -339,10 +339,10 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 				fmt.Println("First preference available for", challenger)
 				takeTeam(challenger, pref.First, &challenge, teams)
 			} else if validMatch(challenger, pref.Second, teams, prefs) {
-				fmt.Println("Second preference vailable for", challenger)
+				fmt.Println("Second preference available for", challenger)
 				takeTeam(challenger, pref.Second, &challenge, teams)
 			} else if validMatch(challenger, pref.Third, teams, prefs) {
-				fmt.Println("Third preference vailable for", challenger)
+				fmt.Println("Third preference available for", challenger)
 				takeTeam(challenger, pref.Third, &challenge, teams)
 			} else {
 				fmt.Println("No preference available, deferring for ", challenger)

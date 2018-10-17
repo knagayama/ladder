@@ -1,8 +1,8 @@
 First preference available for ウデムシラバーズ
 Challenge accepted:  25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
-Second preference vailable for 中本二郎
+Second preference available for 中本二郎
 Challenge accepted:  24 位 中本二郎 vs 21 位 OTO
-Third preference vailable for デカLINE デコ
+Third preference available for デカLINE デコ
 Challenge accepted:  23 位 デカLINE デコ vs 22 位 イカリアスタジオ
 No preference available, checking last resort for イカリアスタジオ
 Max rank opponent preferred.
@@ -51,11 +51,11 @@ First preference available for ミランドラproject
 Challenge accepted:  18 位 ミランドラproject vs 9 位 すまイカ
 First preference available for たつのき
 Challenge accepted:  17 位 たつのき vs 12 位 ぐのトゥーン
-Second preference vailable for スペースイカベーダー40TH
+Second preference available for スペースイカベーダー40TH
 Challenge accepted:  16 位 スペースイカベーダー40TH vs 13 位 セルシス イカ部
 First preference available for eを取り返し隊 [Spee]
 Challenge accepted:  15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
-Third preference vailable for KLaken
+Third preference available for KLaken
 Challenge accepted:  14 位 KLaken vs 11 位 freee アンド・シャイニング・ローーード！！
 First preference available for セルシス イカ部
 Challenge accepted:  13 位 セルシス イカ部 vs 10 位 ハイカラSQ
@@ -103,7 +103,7 @@ Checking if the following team is good: 前夜祭
 No, ranking too high
 Checking if the following team is good: デカLINE
 Maximum rank opponent available:  9 位 すまイカ vs 6 位 デカLINE
-Third preference vailable for マイナーウェポンズ（使うとは言ってない）
+Third preference available for マイナーウェポンズ（使うとは言ってない）
 Challenge accepted:  8 位 マイナーウェポンズ（使うとは言ってない） vs 5 位 前夜祭
 No preference available, checking last resort for Ajitoon
 Min rank opponent preferred.
@@ -114,7 +114,7 @@ Checking if the following team is good: 前夜祭
 Team is taken.
 Checking if the following team is good: 都立道玄坂高校イカ部（仮）
 Minimum rank opponent available:  7 位 Ajitoon vs 4 位 都立道玄坂高校イカ部（仮）
-Second preference vailable for デカLINE
+Second preference available for デカLINE
 Challenge accepted:  6 位 デカLINE vs 2 位 結月ゆかりになりたい
 No preference available, checking last resort for 前夜祭
 Max rank opponent preferred.
@@ -140,24 +140,24 @@ First preference available for 結月ゆかりになりたい
 Challenge accepted:  2 位 結月ゆかりになりたい vs 1 位 アルファベット
 No preference available, checking last resort for アルファベット
 No valid match for  アルファベット
-3 A 2 位 結月ゆかりになりたい vs 1 位 アルファベット
-3 B 3 位 タコです わさわさー vs 1 位 アルファベット
-3 C 5 位 前夜祭 vs 3 位 タコです わさわさー
-3 D 6 位 デカLINE vs 2 位 結月ゆかりになりたい
-3 E 7 位 Ajitoon vs 4 位 都立道玄坂高校イカ部（仮）
-3 F 8 位 マイナーウェポンズ（使うとは言ってない） vs 5 位 前夜祭
-3 G 9 位 すまイカ vs 6 位 デカLINE
-3 H 10 位 ハイカラSQ vs 7 位 Ajitoon
-3 J 11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
-3 K 13 位 セルシス イカ部 vs 10 位 ハイカラSQ
-3 L 14 位 KLaken vs 11 位 freee アンド・シャイニング・ローーード！！
-3 M 15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
-3 N 16 位 スペースイカベーダー40TH vs 13 位 セルシス イカ部
-3 O 17 位 たつのき vs 12 位 ぐのトゥーン
-3 P 18 位 ミランドラproject vs 9 位 すまイカ
-3 Q 19 位 ドリサン商会 vs 15 位 eを取り返し隊 [Spee]
-3 R 21 位 OTO vs 19 位 ドリサン商会
-3 S 22 位 イカリアスタジオ vs 17 位 たつのき
-3 T 23 位 デカLINE デコ vs 22 位 イカリアスタジオ
-3 U 24 位 中本二郎 vs 21 位 OTO
-3 V 25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
+6 A 2 位 結月ゆかりになりたい vs 1 位 アルファベット
+6 B 3 位 タコです わさわさー vs 1 位 アルファベット
+6 C 5 位 前夜祭 vs 3 位 タコです わさわさー
+6 D 6 位 デカLINE vs 2 位 結月ゆかりになりたい
+6 E 7 位 Ajitoon vs 4 位 都立道玄坂高校イカ部（仮）
+6 F 8 位 マイナーウェポンズ（使うとは言ってない） vs 5 位 前夜祭
+6 G 9 位 すまイカ vs 6 位 デカLINE
+6 H 10 位 ハイカラSQ vs 7 位 Ajitoon
+6 J 11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
+6 K 13 位 セルシス イカ部 vs 10 位 ハイカラSQ
+6 L 14 位 KLaken vs 11 位 freee アンド・シャイニング・ローーード！！
+6 M 15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
+6 N 16 位 スペースイカベーダー40TH vs 13 位 セルシス イカ部
+6 O 17 位 たつのき vs 12 位 ぐのトゥーン
+6 P 18 位 ミランドラproject vs 9 位 すまイカ
+6 Q 19 位 ドリサン商会 vs 15 位 eを取り返し隊 [Spee]
+6 R 21 位 OTO vs 19 位 ドリサン商会
+6 S 22 位 イカリアスタジオ vs 17 位 たつのき
+6 T 23 位 デカLINE デコ vs 22 位 イカリアスタジオ
+6 U 24 位 中本二郎 vs 21 位 OTO
+6 V 25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
