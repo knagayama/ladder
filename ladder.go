@@ -84,7 +84,7 @@ func loadTeams() map[string]*Team {
 		case "S+":
 			team.MAC = team.Rank + 3
 		case "S":
-			team.MAC = team.Rank + 4
+			team.MAC = team.Rank + 5
 		case "A":
 			team.MAC = MaxParticipants
 		}

@@ -1,4 +1,5 @@
-[ ウデムシラバーズ 中本二郎 デカLINE デコ イカリアスタジオ OTO アマイイカ ドリサン商会 ミランドラproject たつのき スペースイカベーダー40TH eを取り返し隊 [Spee] KLaken セルシス イカ部 ぐのトゥーン freee アンド・シャイニング・ローーード！！ ハイカラSQ すまイカ マイナーウェポンズ（使うとは言ってない） Ajitoon デカLINE 前夜祭 都立道玄坂高校イカ部（仮） タコです わさわさー 結月ゆかりになりたい アルファベット  テスト]
+Loaded teams: 26
+Loaded prefs: 26
 First preference available for ウデムシラバーズ
 Challenge accepted:  25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
 Second preference available for 中本二郎
@@ -77,33 +78,43 @@ No, ranking too high
 Checking if the following team is good: ぐのトゥーン
 No, ranking too high
 Checking if the following team is good: セルシス イカ部
-No, ranking too high
-Checking if the following team is good: KLaken
 Maximum rank opponent available.
-Challenge accepted:  18 位 ミランドラproject vs 14 位 KLaken
-Second preference available for たつのき
-Challenge accepted:  17 位 たつのき vs 13 位 セルシス イカ部
-First preference available for スペースイカベーダー40TH
-Challenge accepted:  16 位 スペースイカベーダー40TH vs 12 位 ぐのトゥーン
-No preference available, checking last resort for eを取り返し隊 [Spee]
-Min rank opponent preferred.
-Trying to find an opponent. Challenger rank is  15
-Checking if the following team is good: KLaken
+Challenge accepted:  18 位 ミランドラproject vs 13 位 セルシス イカ部
+First preference available for たつのき
+Challenge accepted:  17 位 たつのき vs 12 位 ぐのトゥーン
+Third preference available for スペースイカベーダー40TH
+Challenge accepted:  16 位 スペースイカベーダー40TH vs 11 位 freee アンド・シャイニング・ローーード！！
+First preference available for eを取り返し隊 [Spee]
+Challenge accepted:  15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
+Second preference available for KLaken
+Challenge accepted:  14 位 KLaken vs 9 位 すまイカ
+First preference available for セルシス イカ部
+Challenge accepted:  13 位 セルシス イカ部 vs 10 位 ハイカラSQ
+No preference available, checking last resort for ぐのトゥーン
+Max rank opponent preferred.
+Trying to find an opponent. Challenger rank is  12
+Checking if the following team is good: アルファベット
+No, ranking too high
+Checking if the following team is good: 結月ゆかりになりたい
+No, ranking too high
+Checking if the following team is good: タコです わさわさー
+No, ranking too high
+Checking if the following team is good: 都立道玄坂高校イカ部（仮）
+No, ranking too high
+Checking if the following team is good: 前夜祭
+No, ranking too high
+Checking if the following team is good: デカLINE
+No, ranking too high
+Checking if the following team is good: Ajitoon
+No, ranking too high
+Checking if the following team is good: マイナーウェポンズ（使うとは言ってない）
+No, ranking too high
+Checking if the following team is good: すまイカ
 Invalid match.
-Checking if the following team is good: セルシス イカ部
-Invalid match.
-Checking if the following team is good: ぐのトゥーン
+Checking if the following team is good: ハイカラSQ
 Invalid match.
 Checking if the following team is good: freee アンド・シャイニング・ローーード！！
 Invalid match.
-Checking if the following team is good: ハイカラSQ
-No, ranking too high. No valid match for eを取り返し隊 [Spee]
-Third preference available for KLaken
-Challenge accepted:  14 位 KLaken vs 11 位 freee アンド・シャイニング・ローーード！！
-First preference available for セルシス イカ部
-Challenge accepted:  13 位 セルシス イカ部 vs 10 位 ハイカラSQ
-First preference available for ぐのトゥーン
-Challenge accepted:  12 位 ぐのトゥーン vs 9 位 すまイカ
 First preference available for freee アンド・シャイニング・ローーード！！
 Challenge accepted:  11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
 First preference available for ハイカラSQ
@@ -170,12 +181,12 @@ Challenge accepted:  -1 位 テスト vs 25 位 ウデムシラバーズ
 6 F 8 位 マイナーウェポンズ（使うとは言ってない） vs 6 位 デカLINE
 6 G 10 位 ハイカラSQ vs 7 位 Ajitoon
 6 H 11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
-6 J 12 位 ぐのトゥーン vs 9 位 すまイカ
-6 K 13 位 セルシス イカ部 vs 10 位 ハイカラSQ
-6 L 14 位 KLaken vs 11 位 freee アンド・シャイニング・ローーード！！
-6 M 16 位 スペースイカベーダー40TH vs 12 位 ぐのトゥーン
-6 N 17 位 たつのき vs 13 位 セルシス イカ部
-6 O 18 位 ミランドラproject vs 14 位 KLaken
+6 J 13 位 セルシス イカ部 vs 10 位 ハイカラSQ
+6 K 14 位 KLaken vs 9 位 すまイカ
+6 L 15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
+6 M 16 位 スペースイカベーダー40TH vs 11 位 freee アンド・シャイニング・ローーード！！
+6 N 17 位 たつのき vs 12 位 ぐのトゥーン
+6 O 18 位 ミランドラproject vs 13 位 セルシス イカ部
 6 P 19 位 ドリサン商会 vs 15 位 eを取り返し隊 [Spee]
 6 Q 21 位 OTO vs 19 位 ドリサン商会
 6 R 22 位 イカリアスタジオ vs 17 位 たつのき
