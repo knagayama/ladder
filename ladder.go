@@ -2,7 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	firebase "firebase.google.com/go"
 	"fmt"
+	"golang.org/x/net/context"
+	"google.golang.org/api/option"
 	"io/ioutil"
 	"log"
 )
@@ -41,10 +44,10 @@ const (
 )
 
 type ProcessedPreference struct {
-	Team           *Team
+	Team           string
 	Accept         bool
 	Challenge      bool
-	PrevChallenged *Team
+	PrevChallenged string
 	LastResortPref LastResortChallenge
 	First          string
 	Second         string
@@ -111,8 +114,8 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 	for _, raw_pref := range raw_prefs {
 		var pref ProcessedPreference
 
-		pref.Team = teams[raw_pref.Team]
-		pref.PrevChallenged = teams[raw_pref.PrevChallenged]
+		pref.Team = raw_pref.Team
+		pref.PrevChallenged = raw_pref.PrevChallenged
 		pref.First = raw_pref.First
 		pref.Second = raw_pref.Second
 		pref.Third = raw_pref.Third
@@ -125,8 +128,8 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 		}
 
 		if pref.Accept == false {
-			teams[pref.Team.Name].Taken = true
-			teams[pref.Team.Name].TakenTwo = true
+			teams[pref.Team].Taken = true
+			teams[pref.Team].TakenTwo = true
 		}
 
 		switch raw_pref.Challenge {
@@ -147,7 +150,7 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 			pref.LastResortPref = Any
 		}
 
-		prefs[raw_pref.Team] = &pref
+		prefs[pref.Team] = &pref
 	}
 	fmt.Println("Loaded prefs:", len(prefs))
 	return prefs
@@ -222,8 +225,8 @@ func validMatch(challenger string, defender string, teams map[string]*Team, pref
 		return false
 	}
 	// Did the challenger challenge defender in the previous round?
-	if prefs[challenger].PrevChallenged != nil {
-		if prefs[challenger].PrevChallenged.Name == teams[defender].Name {
+	if prefs[challenger].PrevChallenged != "" {
+		if prefs[challenger].PrevChallenged == teams[defender].Name {
 			return false
 		}
 	}
@@ -391,10 +394,24 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 }
 
 func main() {
+	opt := option.WithCredentialsFile("splathon-ladder-firebase-adminsdk-xlf72-f76389671e.json")
+	ctx := context.Background()
+	app, err := firebase.NewApp(ctx, nil, opt)
+	if err != nil {
+		log.Fatalf("error initialising app: %v\n", err)
+	}
+
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer client.Close()
 
 	// initialize teams and prefs
 	teams := loadTeams()
+	// 	saveTeams(teams, client, ctx)
 	prefs := loadPrefs(teams)
+	//	savePrefs(prefs, client, ctx)
 
 	// resolve challenges based on teams and prefs
 	challenges, sortedTeams := resolveChallenges(teams, prefs)
