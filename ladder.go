@@ -58,9 +58,9 @@ type Challenge struct {
 	ValidMatch     bool
 	Round          int
 	MatchCode      rune
-	Challenger     *Team
+	Challenger     string
 	ChallengerRank int
-	Defender       *Team
+	Defender       string
 	DefenderRank   int
 }
 
@@ -157,29 +157,29 @@ func loadPrefs(teams map[string]*Team) map[string]*ProcessedPreference {
 }
 
 func getMinRank(teams map[string]*Team, sortedTeams []string, prefs map[string]*ProcessedPreference, challenge *Challenge) {
-	challengerRank := challenge.Challenger.Rank
+	challengerRank := teams[challenge.Challenger].Rank
 	fmt.Println("Trying to find an opponent. Challenger rank is ", challengerRank)
 
 	for i := challengerRank - 1; i > 0; i-- {
 		team := sortedTeams[i]
 		fmt.Println("Checking if the following team is good:", team)
 		if teams[team].MAC < challengerRank {
-			fmt.Println("No, ranking too high. No valid match for", challenge.Challenger.Name)
+			fmt.Println("No, ranking too high. No valid match for", challenge.Challenger)
 			challenge.ValidMatch = false
 			break
 		}
-		if validMatch(challenge.Challenger.Name, team, teams, prefs) == false {
+		if validMatch(challenge.Challenger, team, teams, prefs) == false {
 			fmt.Println("Invalid match.")
 		} else {
 			fmt.Println("Minimum rank opponent available.")
-			takeTeam(challenge.Challenger.Name, team, challenge, teams)
+			takeTeam(challenge.Challenger, team, challenge, teams)
 			break
 		}
 	}
 }
 
 func getMaxRank(teams map[string]*Team, sortedTeams []string, prefs map[string]*ProcessedPreference, challenge *Challenge) {
-	challengerRank := challenge.Challenger.Rank
+	challengerRank := teams[challenge.Challenger].Rank
 	fmt.Println("Trying to find an opponent. Challenger rank is ", challengerRank)
 
 	for i := 1; i < challengerRank; i++ {
@@ -187,14 +187,14 @@ func getMaxRank(teams map[string]*Team, sortedTeams []string, prefs map[string]*
 		fmt.Println("Checking if the following team is good:", team)
 		if teams[team].MAC < challengerRank {
 			fmt.Println("No, ranking too high")
-		} else if validMatch(challenge.Challenger.Name, team, teams, prefs) == false {
+		} else if validMatch(challenge.Challenger, team, teams, prefs) == false {
 			fmt.Println("Invalid match.")
-		} else if validMatch(challenge.Challenger.Name, team, teams, prefs) == true {
+		} else if validMatch(challenge.Challenger, team, teams, prefs) == true {
 			fmt.Println("Maximum rank opponent available.")
-			takeTeam(challenge.Challenger.Name, team, challenge, teams)
+			takeTeam(challenge.Challenger, team, challenge, teams)
 			break
 		} else if i == challengerRank+1 {
-			fmt.Println("No valid match for", challenge.Challenger.Name)
+			fmt.Println("No valid match for", challenge.Challenger)
 			challenge.ValidMatch = false
 		}
 	}
@@ -256,7 +256,7 @@ func takeTeam(challenger string, defender string, challenge *Challenge, teams ma
 	} else {
 		teams[defender].Taken = true
 	}
-	fmt.Println("Challenge accepted: ", challenge.Challenger.Rank, "位", challenge.Challenger.Name, "vs", challenge.Defender.Rank, "位", challenge.Defender.Name)
+	fmt.Println("Challenge accepted: ", challenge.ChallengerRank, "位", challenge.Challenger, "vs", challenge.DefenderRank, "位", challenge.Defender)
 }
 
 func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPreference) (map[string]*Challenge, []string) {
@@ -311,7 +311,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 				switch pref.LastResortPref {
 				case None:
 					challenge.ValidMatch = false
-					fmt.Println("No valid match for ", challenge.Challenger.Name)
+					fmt.Println("No valid match for ", challenge.Challenger)
 				case MinRank:
 					// Get the available challengeable team with minimum rank
 					fmt.Println("Min rank opponent preferred.")
@@ -342,7 +342,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
-			for i := challenge.Challenger.Rank - 1; i > 0; i-- {
+			for i := challenge.ChallengerRank - 1; i > 0; i-- {
 				team := sortedTeams[i]
 				fmt.Println("Checking if the following team is good:", team)
 				if validMatch(challenger, team, teams, prefs) == false {
@@ -409,18 +409,19 @@ func main() {
 
 	// initialize teams and prefs
 	teams := loadTeams()
-	// 	saveTeams(teams, client, ctx)
+	saveTeams(teams, client, ctx)
 	prefs := loadPrefs(teams)
-	//	savePrefs(prefs, client, ctx)
+	savePrefs(prefs, client, ctx)
 
 	// resolve challenges based on teams and prefs
 	challenges, sortedTeams := resolveChallenges(teams, prefs)
+	saveChallenges(challenges, client, ctx)
 
 	for _, challenger := range sortedTeams {
 		challenge := challenges[challenger]
 		if challenge != nil {
 			if challenge.ValidMatch {
-				fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger.Name, "vs", challenge.DefenderRank, "位", challenge.Defender.Name)
+				fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger, "vs", challenge.DefenderRank, "位", challenge.Defender)
 			}
 		}
 	}

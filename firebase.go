@@ -51,3 +51,25 @@ func savePrefs(prefs map[string]*ProcessedPreference, client *firestore.Client, 
 		fmt.Println(doc.Data())
 	}
 }
+
+func saveChallenges(prefs map[string]*Challenge, client *firestore.Client, ctx context.Context) {
+	for key, pref := range prefs {
+		_, err := client.Collection("challenges").Doc(key).Set(ctx, pref)
+
+		if err != nil {
+			log.Fatalf("Failed adding challenges: %v", err)
+		}
+	}
+
+	iter := client.Collection("challenges").Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			log.Fatalf("Failed to iterate: %v", err)
+		}
+		fmt.Println(doc.Data())
+	}
+}
