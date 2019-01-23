@@ -1,196 +1,172 @@
-Loaded teams: 26
-Loaded prefs: 26
-First preference available for ウデムシラバーズ
-Challenge accepted:  25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
-Second preference available for 中本二郎
-Challenge accepted:  24 位 中本二郎 vs 21 位 OTO
-Third preference available for デカLINE デコ
-Challenge accepted:  23 位 デカLINE デコ vs 22 位 イカリアスタジオ
-No preference available, checking last resort for イカリアスタジオ
-Max rank opponent preferred.
-Trying to find an opponent. Challenger rank is  22
-Checking if the following team is good: アルファベット
-No, ranking too high
-Checking if the following team is good: 結月ゆかりになりたい
-No, ranking too high
-Checking if the following team is good: タコです わさわさー
-No, ranking too high
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
-No, ranking too high
-Checking if the following team is good: 前夜祭
-No, ranking too high
-Checking if the following team is good: デカLINE
-No, ranking too high
-Checking if the following team is good: Ajitoon
-No, ranking too high
-Checking if the following team is good: マイナーウェポンズ（使うとは言ってない）
-No, ranking too high
-Checking if the following team is good: すまイカ
-No, ranking too high
-Checking if the following team is good: ハイカラSQ
-No, ranking too high
-Checking if the following team is good: freee アンド・シャイニング・ローーード！！
-No, ranking too high
-Checking if the following team is good: ぐのトゥーン
-No, ranking too high
-Checking if the following team is good: セルシス イカ部
-No, ranking too high
-Checking if the following team is good: KLaken
-No, ranking too high
-Checking if the following team is good: eを取り返し隊 [Spee]
-No, ranking too high
-Checking if the following team is good: スペースイカベーダー40TH
-Invalid match.
-Checking if the following team is good: たつのき
-Maximum rank opponent available.
-Challenge accepted:  22 位 イカリアスタジオ vs 17 位 たつのき
-First preference available for OTO
-Challenge accepted:  21 位 OTO vs 19 位 ドリサン商会
-No preference available, checking last resort for アマイイカ
-No valid match for  アマイイカ
-First preference available for ドリサン商会
-Challenge accepted:  19 位 ドリサン商会 vs 15 位 eを取り返し隊 [Spee]
-No preference available, checking last resort for ミランドラproject
-Max rank opponent preferred.
-Trying to find an opponent. Challenger rank is  18
-Checking if the following team is good: アルファベット
-No, ranking too high
-Checking if the following team is good: 結月ゆかりになりたい
-No, ranking too high
-Checking if the following team is good: タコです わさわさー
-No, ranking too high
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
-No, ranking too high
-Checking if the following team is good: 前夜祭
-No, ranking too high
-Checking if the following team is good: デカLINE
-No, ranking too high
-Checking if the following team is good: Ajitoon
-No, ranking too high
-Checking if the following team is good: マイナーウェポンズ（使うとは言ってない）
-No, ranking too high
-Checking if the following team is good: すまイカ
-No, ranking too high
-Checking if the following team is good: ハイカラSQ
-No, ranking too high
-Checking if the following team is good: freee アンド・シャイニング・ローーード！！
-No, ranking too high
-Checking if the following team is good: ぐのトゥーン
-No, ranking too high
-Checking if the following team is good: セルシス イカ部
-Maximum rank opponent available.
-Challenge accepted:  18 位 ミランドラproject vs 13 位 セルシス イカ部
-First preference available for たつのき
-Challenge accepted:  17 位 たつのき vs 12 位 ぐのトゥーン
-Third preference available for スペースイカベーダー40TH
-Challenge accepted:  16 位 スペースイカベーダー40TH vs 11 位 freee アンド・シャイニング・ローーード！！
-First preference available for eを取り返し隊 [Spee]
-Challenge accepted:  15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
-Second preference available for KLaken
-Challenge accepted:  14 位 KLaken vs 9 位 すまイカ
-First preference available for セルシス イカ部
-Challenge accepted:  13 位 セルシス イカ部 vs 10 位 ハイカラSQ
-No preference available, checking last resort for ぐのトゥーン
-Max rank opponent preferred.
-Trying to find an opponent. Challenger rank is  12
-Checking if the following team is good: アルファベット
-No, ranking too high
-Checking if the following team is good: 結月ゆかりになりたい
-No, ranking too high
-Checking if the following team is good: タコです わさわさー
-No, ranking too high
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
-No, ranking too high
-Checking if the following team is good: 前夜祭
-No, ranking too high
-Checking if the following team is good: デカLINE
-No, ranking too high
-Checking if the following team is good: Ajitoon
-No, ranking too high
-Checking if the following team is good: マイナーウェポンズ（使うとは言ってない）
-No, ranking too high
-Checking if the following team is good: すまイカ
-Invalid match.
-Checking if the following team is good: ハイカラSQ
-Invalid match.
-Checking if the following team is good: freee アンド・シャイニング・ローーード！！
-Invalid match.
-First preference available for freee アンド・シャイニング・ローーード！！
-Challenge accepted:  11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
-First preference available for ハイカラSQ
-Challenge accepted:  10 位 ハイカラSQ vs 7 位 Ajitoon
-No preference available, checking last resort for すまイカ
-Max rank opponent preferred.
-Trying to find an opponent. Challenger rank is  9
-Checking if the following team is good: アルファベット
-No, ranking too high
-Checking if the following team is good: 結月ゆかりになりたい
-No, ranking too high
-Checking if the following team is good: タコです わさわさー
-No, ranking too high
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
-No, ranking too high
-Checking if the following team is good: 前夜祭
-No, ranking too high
-Checking if the following team is good: デカLINE
-Invalid match.
-Checking if the following team is good: Ajitoon
-Invalid match.
-Checking if the following team is good: マイナーウェポンズ（使うとは言ってない）
-Invalid match.
-First preference available for マイナーウェポンズ（使うとは言ってない）
-Challenge accepted:  8 位 マイナーウェポンズ（使うとは言ってない） vs 6 位 デカLINE
-No preference available, checking last resort for Ajitoon
+Loaded teams: 25
+Loaded prefs: 25
+First preference available for あの女のハウス
+Challenge accepted:  25 位 あの女のハウス vs 16 位 イカリアスタジオ
+Second preference available for Griphone
+Challenge accepted:  24 位 Griphone vs 17 位 ウデムシラバーズ
+First preference available for スペースイカベーダーGROOVY
+Challenge accepted:  23 位 スペースイカベーダーGROOVY vs 18 位 みかんむかんごはん
+Second preference available for NuRItacles
+Challenge accepted:  22 位 NuRItacles vs 20 位 新セルシスイカ部（仮）
+No preference available, checking last resort for RAMDA
 Min rank opponent preferred.
-Trying to find an opponent. Challenger rank is  7
-Checking if the following team is good: デカLINE
+Trying to find an opponent. Challenger rank is  21
+Checking if the following team is good: 新セルシスイカ部（仮）
 Invalid match.
-Checking if the following team is good: 前夜祭
-Invalid match.
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
+Checking if the following team is good: NuRItaclesベッチュー
 Minimum rank opponent available.
-Challenge accepted:  7 位 Ajitoon vs 4 位 都立道玄坂高校イカ部（仮）
-First preference available for デカLINE
-Challenge accepted:  6 位 デカLINE vs 5 位 前夜祭
-No preference available, checking last resort for 前夜祭
+Challenge accepted:  21 位 RAMDA vs 19 位 NuRItaclesベッチュー
+Third preference available for 新セルシスイカ部（仮）
+Challenge accepted:  20 位 新セルシスイカ部（仮） vs 15 位 inklewood
+First preference available for NuRItaclesベッチュー
+Challenge accepted:  19 位 NuRItaclesベッチュー vs 14 位 ex-ca
+No preference available, checking last resort for みかんむかんごはん
+Min rank opponent preferred.
+Trying to find an opponent. Challenger rank is  18
+Checking if the following team is good: ウデムシラバーズ
+Invalid match.
+Checking if the following team is good: イカリアスタジオ
+Invalid match.
+Checking if the following team is good: inklewood
+Invalid match.
+Checking if the following team is good: ex-ca
+Invalid match.
+Checking if the following team is good: mitsucari
+Minimum rank opponent available.
+Challenge accepted:  18 位 みかんむかんごはん vs 13 位 mitsucari
+No preference available, checking last resort for ウデムシラバーズ
 Max rank opponent preferred.
-Trying to find an opponent. Challenger rank is  5
-Checking if the following team is good: アルファベット
+Trying to find an opponent. Challenger rank is  17
+Checking if the following team is good: アブギダ
 No, ranking too high
 Checking if the following team is good: 結月ゆかりになりたい
 No, ranking too high
-Checking if the following team is good: タコです わさわさー
+Checking if the following team is good: 道玄坂高校イカ部（仮）
+No, ranking too high
+Checking if the following team is good: （企業名と異なるのは確実ですが未定なのであとで）
+No, ranking too high
+Checking if the following team is good: エールください
+No, ranking too high
+Checking if the following team is good: NuRItaclesカスタム
+No, ranking too high
+Checking if the following team is good: Ajitoon
+No, ranking too high
+Checking if the following team is good: ペンキぬり
+No, ranking too high
+Checking if the following team is good: NuRItaclesコラボ
+No, ranking too high
+Checking if the following team is good: 千駄ヶ谷ゲームセンター
+No, ranking too high
+Checking if the following team is good: ぐのトゥーン
+No, ranking too high
+Checking if the following team is good: デカLINE ベッチュー
+Maximum rank opponent available.
+Challenge accepted:  17 位 ウデムシラバーズ vs 12 位 デカLINE ベッチュー
+No preference available, checking last resort for イカリアスタジオ
+Min rank opponent preferred.
+Trying to find an opponent. Challenger rank is  16
+Checking if the following team is good: inklewood
 Invalid match.
-Checking if the following team is good: 都立道玄坂高校イカ部（仮）
+Checking if the following team is good: ex-ca
 Invalid match.
-First preference available for 都立道玄坂高校イカ部（仮）
-Challenge accepted:  4 位 都立道玄坂高校イカ部（仮） vs 3 位 タコです わさわさー
-First preference available for タコです わさわさー
-Challenge accepted:  3 位 タコです わさわさー vs 1 位 アルファベット
+Checking if the following team is good: mitsucari
+Invalid match.
+Checking if the following team is good: デカLINE ベッチュー
+Invalid match.
+Checking if the following team is good: ぐのトゥーン
+Minimum rank opponent available.
+Challenge accepted:  16 位 イカリアスタジオ vs 11 位 ぐのトゥーン
+No preference available, checking last resort for inklewood
+Min rank opponent preferred.
+Trying to find an opponent. Challenger rank is  15
+Checking if the following team is good: ex-ca
+Invalid match.
+Checking if the following team is good: mitsucari
+Invalid match.
+Checking if the following team is good: デカLINE ベッチュー
+Invalid match.
+Checking if the following team is good: ぐのトゥーン
+Invalid match.
+Checking if the following team is good: 千駄ヶ谷ゲームセンター
+Minimum rank opponent available.
+Challenge accepted:  15 位 inklewood vs 10 位 千駄ヶ谷ゲームセンター
+No preference available, checking last resort for ex-ca
+Min rank opponent preferred.
+Trying to find an opponent. Challenger rank is  14
+Checking if the following team is good: mitsucari
+Invalid match.
+Checking if the following team is good: デカLINE ベッチュー
+Invalid match.
+Checking if the following team is good: ぐのトゥーン
+Invalid match.
+Checking if the following team is good: 千駄ヶ谷ゲームセンター
+Invalid match.
+Checking if the following team is good: NuRItaclesコラボ
+Minimum rank opponent available.
+Challenge accepted:  14 位 ex-ca vs 9 位 NuRItaclesコラボ
+No preference available, checking last resort for mitsucari
+No valid match for  mitsucari
+No preference available, checking last resort for デカLINE ベッチュー
+No valid match for  デカLINE ベッチュー
+Third preference available for ぐのトゥーン
+Challenge accepted:  11 位 ぐのトゥーン vs 8 位 ペンキぬり
+First preference available for 千駄ヶ谷ゲームセンター
+Challenge accepted:  10 位 千駄ヶ谷ゲームセンター vs 7 位 Ajitoon
+Third preference available for NuRItaclesコラボ
+Challenge accepted:  9 位 NuRItaclesコラボ vs 6 位 NuRItaclesカスタム
+First preference available for ペンキぬり
+Challenge accepted:  8 位 ペンキぬり vs 5 位 エールください
+Third preference available for Ajitoon
+Challenge accepted:  7 位 Ajitoon vs 4 位 （企業名と異なるのは確実ですが未定なのであとで）
+No preference available, checking last resort for NuRItaclesカスタム
+Willing to challenge anyone.
+First preference available for エールください
+Challenge accepted:  5 位 エールください vs 3 位 道玄坂高校イカ部（仮）
+No preference available, checking last resort for （企業名と異なるのは確実ですが未定なのであとで）
+Willing to challenge anyone.
+First preference available for 道玄坂高校イカ部（仮）
+Challenge accepted:  3 位 道玄坂高校イカ部（仮） vs 2 位 結月ゆかりになりたい
 First preference available for 結月ゆかりになりたい
-Challenge accepted:  2 位 結月ゆかりになりたい vs 1 位 アルファベット
-No preference available, checking last resort for アルファベット
-No valid match for  アルファベット
-First preference available for テスト
-Challenge accepted:  -1 位 テスト vs 25 位 ウデムシラバーズ
-6 A 2 位 結月ゆかりになりたい vs 1 位 アルファベット
-6 B 3 位 タコです わさわさー vs 1 位 アルファベット
-6 C 4 位 都立道玄坂高校イカ部（仮） vs 3 位 タコです わさわさー
-6 D 6 位 デカLINE vs 5 位 前夜祭
-6 E 7 位 Ajitoon vs 4 位 都立道玄坂高校イカ部（仮）
-6 F 8 位 マイナーウェポンズ（使うとは言ってない） vs 6 位 デカLINE
-6 G 10 位 ハイカラSQ vs 7 位 Ajitoon
-6 H 11 位 freee アンド・シャイニング・ローーード！！ vs 8 位 マイナーウェポンズ（使うとは言ってない）
-6 J 13 位 セルシス イカ部 vs 10 位 ハイカラSQ
-6 K 14 位 KLaken vs 9 位 すまイカ
-6 L 15 位 eを取り返し隊 [Spee] vs 14 位 KLaken
-6 M 16 位 スペースイカベーダー40TH vs 11 位 freee アンド・シャイニング・ローーード！！
-6 N 17 位 たつのき vs 12 位 ぐのトゥーン
-6 O 18 位 ミランドラproject vs 13 位 セルシス イカ部
-6 P 19 位 ドリサン商会 vs 15 位 eを取り返し隊 [Spee]
-6 Q 21 位 OTO vs 19 位 ドリサン商会
-6 R 22 位 イカリアスタジオ vs 17 位 たつのき
-6 S 23 位 デカLINE デコ vs 22 位 イカリアスタジオ
-6 T 24 位 中本二郎 vs 21 位 OTO
-6 U 25 位 ウデムシラバーズ vs 16 位 スペースイカベーダー40TH
-6 W -1 位 テスト vs 25 位 ウデムシラバーズ
+Challenge accepted:  2 位 結月ゆかりになりたい vs 1 位 アブギダ
+No preference available, checking last resort for アブギダ
+No valid match for  アブギダ
+Checking opponents for NuRItaclesカスタム
+Checking if the following team is good: エールください
+Invalid match.
+Checking if the following team is good: （企業名と異なるのは確実ですが未定なのであとで）
+Invalid match.
+Checking if the following team is good: 道玄坂高校イカ部（仮）
+Invalid match.
+Checking if the following team is good: 結月ゆかりになりたい
+Invalid match.
+Checking if the following team is good: アブギダ
+Invalid match.
+No valid match for NuRItaclesカスタム
+Checking opponents for （企業名と異なるのは確実ですが未定なのであとで）
+Checking if the following team is good: 道玄坂高校イカ部（仮）
+Invalid match.
+Checking if the following team is good: 結月ゆかりになりたい
+Invalid match.
+Checking if the following team is good: アブギダ
+Invalid match.
+No valid match for （企業名と異なるのは確実ですが未定なのであとで）
+1 A 2 位 結月ゆかりになりたい vs 1 位 アブギダ
+1 B 3 位 道玄坂高校イカ部（仮） vs 2 位 結月ゆかりになりたい
+1 C 5 位 エールください vs 3 位 道玄坂高校イカ部（仮）
+1 D 7 位 Ajitoon vs 4 位 （企業名と異なるのは確実ですが未定なのであとで）
+1 E 8 位 ペンキぬり vs 5 位 エールください
+1 F 9 位 NuRItaclesコラボ vs 6 位 NuRItaclesカスタム
+1 G 10 位 千駄ヶ谷ゲームセンター vs 7 位 Ajitoon
+1 H 11 位 ぐのトゥーン vs 8 位 ペンキぬり
+1 J 14 位 ex-ca vs 9 位 NuRItaclesコラボ
+1 K 15 位 inklewood vs 10 位 千駄ヶ谷ゲームセンター
+1 L 16 位 イカリアスタジオ vs 11 位 ぐのトゥーン
+1 M 17 位 ウデムシラバーズ vs 12 位 デカLINE ベッチュー
+1 N 18 位 みかんむかんごはん vs 13 位 mitsucari
+1 O 19 位 NuRItaclesベッチュー vs 14 位 ex-ca
+1 P 20 位 新セルシスイカ部（仮） vs 15 位 inklewood
+1 Q 21 位 RAMDA vs 19 位 NuRItaclesベッチュー
+1 R 22 位 NuRItacles vs 20 位 新セルシスイカ部（仮）
+1 S 23 位 スペースイカベーダーGROOVY vs 18 位 みかんむかんごはん
+1 T 24 位 Griphone vs 17 位 ウデムシラバーズ
+1 U 25 位 あの女のハウス vs 16 位 イカリアスタジオ

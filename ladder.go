@@ -2,16 +2,13 @@ package main
 
 import (
 	"encoding/json"
-	firebase "firebase.google.com/go"
 	"fmt"
-	"golang.org/x/net/context"
-	"google.golang.org/api/option"
 	"io/ioutil"
 	"log"
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 6
+const CurrentRound = 1
 
 type Team struct {
 	Rank     int    `json:"rank"`
@@ -243,7 +240,7 @@ func validMatch(challenger string, defender string, teams map[string]*Team, pref
 }
 
 func takeTeam(challenger string, defender string, challenge *Challenge, teams map[string]*Team) {
-	challenge.Defender = teams[defender]
+	challenge.Defender = defender
 	challenge.DefenderRank = teams[defender].Rank
 	challenge.ValidMatch = true
 
@@ -290,7 +287,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 	for _, challenger := range descSortedTeams {
 		if challenger != "" && prefs[challenger] != nil {
 			var challenge Challenge
-			challenge.Challenger = teams[challenger]
+			challenge.Challenger = challenger
 			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
@@ -338,7 +335,7 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 		if challenger != "" {
 			fmt.Println("Checking opponents for", challenger)
 			var challenge Challenge
-			challenge.Challenger = teams[challenger]
+			challenge.Challenger = challenger
 			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = CurrentRound
 
@@ -394,28 +391,12 @@ func resolveChallenges(teams map[string]*Team, prefs map[string]*ProcessedPrefer
 }
 
 func main() {
-	opt := option.WithCredentialsFile("splathon-ladder-firebase-adminsdk-xlf72-f76389671e.json")
-	ctx := context.Background()
-	app, err := firebase.NewApp(ctx, nil, opt)
-	if err != nil {
-		log.Fatalf("error initialising app: %v\n", err)
-	}
-
-	client, err := app.Firestore(ctx)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer client.Close()
-
 	// initialize teams and prefs
 	teams := loadTeams()
-	saveTeams(teams, client, ctx)
 	prefs := loadPrefs(teams)
-	savePrefs(prefs, client, ctx)
 
 	// resolve challenges based on teams and prefs
 	challenges, sortedTeams := resolveChallenges(teams, prefs)
-	saveChallenges(challenges, client, ctx)
 
 	for _, challenger := range sortedTeams {
 		challenge := challenges[challenger]

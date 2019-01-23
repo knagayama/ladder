@@ -1,158 +1,127 @@
 [
   {
     "rank": 1,
-    "prev_rank": 1,
     "division": "X",
-    "team": "アルファベット"
+    "team": "アブギダ"
   },
   {
     "rank": 2,
-    "prev_rank": 2,
     "division": "X",
     "team": "結月ゆかりになりたい"
   },
   {
     "rank": 3,
-    "prev_rank": 3,
     "division": "X",
-    "team": "タコです わさわさー"
+    "team": "道玄坂高校イカ部（仮）"
   },
   {
     "rank": 4,
-    "prev_rank": 4,
     "division": "S+",
-    "team": "都立道玄坂高校イカ部（仮）"
+    "team": "（企業名と異なるのは確実ですが未定なのであとで）"
   },
   {
     "rank": 5,
-    "prev_rank": 5,
     "division": "S+",
-    "team": "前夜祭"
+    "team": "エールください"
   },
   {
     "rank": 6,
-    "prev_rank": 6,
     "division": "S+",
-    "team": "デカLINE"
+    "team": "NuRItaclesカスタム"
   },
   {
     "rank": 7,
-    "prev_rank": 7,
     "division": "S+",
     "team": "Ajitoon"
   },
   {
     "rank": 8,
-    "prev_rank": 8,
     "division": "S+",
-    "team": "マイナーウェポンズ（使うとは言ってない）"
+    "team": "ペンキぬり"
   },
   {
     "rank": 9,
-    "prev_rank": 9,
     "division": "S",
-    "team": "すまイカ"
+    "team": "NuRItaclesコラボ"
   },
   {
     "rank": 10,
-    "prev_rank": 19,
     "division": "S",
-    "team": "ハイカラSQ"
+    "team": "千駄ヶ谷ゲームセンター"
   },
   {
     "rank": 11,
-    "prev_rank": 12,
-    "division": "S",
-    "team": "freee アンド・シャイニング・ローーード！！"
-  },
-  {
-    "rank": 12,
-    "prev_rank": 11,
     "division": "S",
     "team": "ぐのトゥーン"
   },
   {
-    "rank": 13,
-    "prev_rank": 13,
+    "rank": 12,
     "division": "S",
-    "team": "セルシス イカ部"
+    "team": "デカLINE ベッチュー"
+  },
+  {
+    "rank": 13,
+    "division": "S",
+    "team": "mitsucari"
   },
   {
     "rank": 14,
-    "prev_rank": 14,
     "division": "S",
-    "team": "KLaken"
+    "team": "ex-ca"
   },
   {
     "rank": 15,
-    "prev_rank": 17,
     "division": "S",
-    "team": "eを取り返し隊 [Spee]"
+    "team": "inklewood"
   },
   {
     "rank": 16,
-    "prev_rank": 23,
-    "division": "A",
-    "team": "スペースイカベーダー40TH"
-  },
-  {
-    "rank": 17,
-    "prev_rank": 10,
-    "division": "A",
-    "team": "たつのき"
-  },
-  {
-    "rank": 18,
-    "prev_rank": 15,
-    "division": "A",
-    "team": "ミランドラproject"
-  },
-  {
-    "rank": 19,
-    "prev_rank": 20,
-    "division": "A",
-    "team": "ドリサン商会"
-  },
-  {
-    "rank": 20,
-    "prev_rank": 16,
-    "division": "A",
-    "team": "アマイイカ"
-  },
-  {
-    "rank": 21,
-    "prev_rank": 21,
-    "division": "A",
-    "team": "OTO"
-  },
-  {
-    "rank": 22,
-    "prev_rank": 22,
     "division": "A",
     "team": "イカリアスタジオ"
   },
   {
-    "rank": 23,
-    "prev_rank": 18,
-    "division": "A",
-    "team": "デカLINE デコ"
-  },
-  {
-    "rank": 24,
-    "prev_rank": 24,
-    "division": "A",
-    "team": "中本二郎"
-  },
-  {
-    "rank": 25,
-    "prev_rank": -1,
+    "rank": 17,
     "division": "A",
     "team": "ウデムシラバーズ"
   },
-	{
-		"rank": -1,
-		"prev_rank": 0,
-		"division": "",
-		"team": "テスト"
-	}
+  {
+    "rank": 18,
+    "division": "A",
+    "team": "みかんむかんごはん"
+  },
+  {
+    "rank": 19,
+    "division": "A",
+    "team": "NuRItaclesベッチュー"
+  },
+  {
+    "rank": 20,
+    "division": "A",
+    "team": "新セルシスイカ部（仮）"
+  },
+  {
+    "rank": 21,
+    "division": "A",
+    "team": "RAMDA"
+  },
+  {
+    "rank": 22,
+    "division": "A",
+    "team": "NuRItacles"
+  },
+  {
+    "rank": 23,
+    "division": "A",
+    "team": "スペースイカベーダーGROOVY"
+  },
+  {
+    "rank": 24,
+    "division": "A",
+    "team": "Griphone"
+  },
+  {
+    "rank": 25,
+    "division": "A",
+    "team": "あの女のハウス"
+  }
 ]
