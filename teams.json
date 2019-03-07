@@ -129,7 +129,7 @@
     "prev_rank": 22,
     "rank": 22,
     "division": "A",
-    "team": "ウデムシラバーズ"
+		"team": "ウデムシラバーズ"
   },
   {
     "prev_rank": 23,
@@ -148,5 +148,13 @@
     "rank": 25,
     "division": "A",
     "team": "あの女のハウス"
-  }
+  },
+	{
+		"team": "前夜祭",
+		"new": true
+	},
+	{
+		"team": "インク代freee",
+		"new": true
+	}
 ]

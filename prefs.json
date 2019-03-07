@@ -262,5 +262,27 @@
     "first": "",
     "second": "",
     "third": ""
+  },
+  {
+    "team": "前夜祭",
+    "accept": "受け付ける",
+    "challenge": "行う",
+    "current_rank": -1,
+    "last_resort": "自分より上位のチームならどこでもいいからチャレンジする",
+    "prev_challenged": "",
+    "first": "千駄ヶ谷ゲームセンター",
+    "second": "ぐのトゥーン",
+    "third": "NuRItacles"
+  },
+  {
+		"team": "インク代freee",
+    "accept": "受け付ける",
+    "challenge": "行う",
+    "current_rank": -2,
+    "last_resort": "自分より上位のチームならどこでもいいからチャレンジする",
+    "prev_challenged": "",
+    "first": "スペースイカベーダーGROOVY",
+    "second": "ウデムシラバーズ",
+    "third": "デカLINE ベッチュー"
   }
 ]
