@@ -72,7 +72,7 @@ type Challenge struct {
 }
 
 func (round *Round) initRound() {
-	// Load teams.
+	// 1. Load teams.
 
 	// Get JSON file
 	t, err := ioutil.ReadFile("teams.json")
@@ -106,7 +106,7 @@ func (round *Round) initRound() {
 	fmt.Println("Loaded teams:", len(teams))
 	round.Teams = teams
 
-	// Sort teams by priority
+	// 2. Sort teams by priority
 
 	sortedTeams := make([]string, len(teams)+1)
 	var newTeams []string
@@ -134,7 +134,7 @@ func (round *Round) initRound() {
 	round.AscOrder = sortedTeams
 	round.DescOrder = descSortedTeams
 
-	// Load preferences.
+	// 3. Load preferences.
 	p, err := ioutil.ReadFile("prefs.json")
 	if err != nil {
 		log.Fatal(err)
@@ -192,7 +192,6 @@ func (round *Round) initRound() {
 	round.Prefs = prefs
 
 	round.Current = CurrentRound
-	fmt.Println(round)
 }
 
 func (round *Round) validateMatch(challenger string, defender string, ignoreMac bool) bool {
