@@ -8,7 +8,7 @@ import (
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 1
+const CurrentRound = 4
 
 type Team struct {
 	Rank     int    `json:"rank"`
@@ -402,7 +402,7 @@ func main() {
 		challenge := challenges[challenger]
 		if challenge != nil {
 			if challenge.ValidMatch {
-				fmt.Println(challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, "位", challenge.Challenger, "vs", challenge.DefenderRank, "位", challenge.Defender)
+				fmt.Printf("[%d-%s] %d位 %s vs %d位 %s\n", challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
 			}
 		}
 	}
