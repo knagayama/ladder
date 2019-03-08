@@ -32,6 +32,17 @@
     "second": "inklewood",
     "third": "新セルシスイカ部（仮）"
   },
+	{
+		"team": "ウデムシラバーズ",
+    "accept": "受け付ける",
+    "challenge": "行う",
+    "current_rank": 22,
+    "last_resort": "自分より上位のチームならどこでもいいからチャレンジする",
+    "prev_challenged": "inklewood",
+    "first": "新セルシスイカ部（仮）",
+    "second": "みかんむかんごはん",
+    "third": "RAMDA"
+	},
   {
     "team": "RAMDA",
     "accept": "受け付ける",
