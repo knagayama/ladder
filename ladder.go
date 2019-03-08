@@ -225,6 +225,11 @@ func (round *Round) validateMatch(challenger string, defender string, ignoreMac 
 		fmt.Println(defender, "is taken.")
 		return false
 	}
+	// Is the challenger's rank lower than defender's rank?
+	if teams[challenger].Rank < teams[defender].Rank {
+		fmt.Println("Challenging", challenger, "rank is higher than defending", defender)
+		return false
+	}
 	// Is the defender's rank too high to be challenged?
 	if ignoreMac == false && teams[defender].MAC < teams[challenger].Rank {
 		fmt.Println(defender, "rank is too high to be challenged.")
