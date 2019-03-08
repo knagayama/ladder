@@ -71,11 +71,11 @@ type Challenge struct {
 	DefenderRank   int
 }
 
-func (round *Round) initRound() {
+func (round *Round) initRound(teams_path string, prefs_path string) {
 	// 1. Load teams.
 
 	// Get JSON file
-	t, err := ioutil.ReadFile("teams.json")
+	t, err := ioutil.ReadFile(teams_path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -135,7 +135,7 @@ func (round *Round) initRound() {
 	round.DescOrder = descSortedTeams
 
 	// 3. Load preferences.
-	p, err := ioutil.ReadFile("prefs.json")
+	p, err := ioutil.ReadFile(prefs_path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -441,7 +441,7 @@ func (round *Round) printChallenges() {
 
 func main() {
 	var round Round
-	round.initRound()
+	round.initRound("teams.json", "prefs.json")
 	round.generateChallenges()
 	round.printChallenges()
 }
