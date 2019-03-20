@@ -1,14 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"log"
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 4
+const CurrentRound = 5
 
 type Round struct {
 	Teams     map[string]*Team
@@ -74,35 +71,7 @@ type Challenge struct {
 func (round *Round) initRound(teams_path string, prefs_path string) {
 	// 1. Load teams.
 
-	// Get JSON file
-	t, err := ioutil.ReadFile(teams_path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Decode JSON
-	var rawteams []*Team
-	if err := json.Unmarshal(t, &rawteams); err != nil {
-		log.Fatal(err)
-	}
-
-	teams := make(map[string]*Team)
-
-	for _, team := range rawteams {
-		team.Taken = false
-		switch team.Division {
-		case "X":
-			team.MAC = team.Rank + 2
-		case "S+":
-			team.MAC = team.Rank + 3
-		case "S":
-			team.MAC = team.Rank + 5
-		case "A":
-			team.MAC = MaxParticipants
-		}
-		teams[team.Name] = team
-	}
-
+	teams := getTeamsFromSpreadsheet()
 	fmt.Println("Loaded teams:", len(teams))
 	round.Teams = teams
 
@@ -135,15 +104,7 @@ func (round *Round) initRound(teams_path string, prefs_path string) {
 	round.DescOrder = descSortedTeams
 
 	// 3. Load preferences.
-	p, err := ioutil.ReadFile(prefs_path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var raw_prefs []RawPreference
-	if err := json.Unmarshal(p, &raw_prefs); err != nil {
-		log.Fatal(err)
-	}
+	raw_prefs := getPrefsFromSpreadsheet()
 
 	prefs := make(map[string]*ProcessedPreference)
 
@@ -188,6 +149,7 @@ func (round *Round) initRound(teams_path string, prefs_path string) {
 
 		prefs[pref.Team] = &pref
 	}
+
 	fmt.Println("Loaded prefs:", len(prefs))
 	round.Prefs = prefs
 
