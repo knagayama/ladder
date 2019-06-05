@@ -5,7 +5,7 @@ import (
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 5
+const CurrentRound = 1
 
 type Round struct {
 	Teams     map[string]*Team
