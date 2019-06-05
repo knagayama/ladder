@@ -61,7 +61,7 @@ type ProcessedPreference struct {
 type Challenge struct {
 	ValidMatch     bool
 	Round          int
-	MatchCode      rune
+	MatchCode      int
 	Challenger     string
 	ChallengerRank int
 	Defender       string
@@ -370,16 +370,13 @@ func (round *Round) generateChallenges() {
 
 	// 3. Give MatchCodes accordingly
 
-	code := 'A'
+	code := 1
 
 	for _, value := range ascSortedTeams {
 		if value != "" && challenges[value] != nil {
 			if challenges[value].ValidMatch == true {
 				challenges[value].MatchCode = code
 				code++
-				if code == 'I' {
-					code++
-				}
 			}
 		}
 	}
@@ -393,9 +390,9 @@ func (round *Round) printChallenges() {
 		challenge := round.Chals[challenger]
 		if challenge != nil && challenge.ValidMatch {
 			if round.Teams[challenger].New {
-				fmt.Printf("[%d-%s] New! %s vs %d位 %s\n", challenge.Round, string(challenge.MatchCode), challenge.Challenger, challenge.DefenderRank, challenge.Defender)
+				fmt.Printf("[%d-%02d] New! %s vs %02d位 %s\n", challenge.Round, challenge.MatchCode, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
 			} else {
-				fmt.Printf("[%d-%s] %d位 %s vs %d位 %s\n", challenge.Round, string(challenge.MatchCode), challenge.ChallengerRank, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
+				fmt.Printf("[%d-%02d] %02d位 %s vs %02d位 %s\n", challenge.Round, challenge.MatchCode, challenge.ChallengerRank, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
 			}
 		}
 	}
