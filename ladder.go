@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"flag"
 )
 
 const MaxParticipants = 1000
-const CurrentRound = 1
 
 type Round struct {
 	Teams     map[string]*Team
@@ -68,7 +68,7 @@ type Challenge struct {
 	DefenderRank   int
 }
 
-func (round *Round) initRound(teams_path string, prefs_path string) {
+func (round *Round) initRound(currentRound int) {
 	// 1. Load teams.
 
 	teams := getTeamsFromSpreadsheet()
@@ -153,7 +153,7 @@ func (round *Round) initRound(teams_path string, prefs_path string) {
 	fmt.Println("Loaded prefs:", len(prefs))
 	round.Prefs = prefs
 
-	round.Current = CurrentRound
+	round.Current = currentRound
 }
 
 func (round *Round) validateMatch(challenger string, defender string, ignoreMac bool) bool {
@@ -345,7 +345,7 @@ func (round *Round) generateChallenges() {
 			var challenge Challenge
 			challenge.Challenger = challenger
 			challenge.ChallengerRank = teams[challenger].Rank
-			challenge.Round = CurrentRound
+			challenge.Round = round.Current
 
 			for i := challenge.ChallengerRank - 1; i > 0; i-- {
 				team := ascSortedTeams[i]
@@ -385,7 +385,7 @@ func (round *Round) generateChallenges() {
 }
 
 func (round *Round) printChallenges() {
-	fmt.Println("====ラウンド", round.Current, "全試合 ====")
+	fmt.Println("==== ラウンド", round.Current, "全試合 ====")
 	for _, challenger := range round.AscOrder {
 		challenge := round.Chals[challenger]
 		if challenge != nil && challenge.ValidMatch {
@@ -396,11 +396,25 @@ func (round *Round) printChallenges() {
 			}
 		}
 	}
+	fmt.Println("==== ラウンド", round.Current, "全試合csv ====")
+	fmt.Println("id,挑戦側rank,挑戦側チーム名,防衛側rank,防衛側チーム名")
+	for _, challenger := range round.AscOrder {
+		challenge := round.Chals[challenger]
+		if challenge != nil && challenge.ValidMatch {
+			if round.Teams[challenger].New {
+				fmt.Printf("[%d-%02d],New,%s,%02d,%s\n", challenge.Round, challenge.MatchCode, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
+			} else {
+				fmt.Printf("[%d-%02d],%02d位,%s,%02d位,%s\n", challenge.Round, challenge.MatchCode, challenge.ChallengerRank, challenge.Challenger, challenge.DefenderRank, challenge.Defender)
+			}
+		}
+	}
 }
 
 func main() {
 	var round Round
-	round.initRound("teams.json", "prefs.json")
+	currentRound := flag.Int("round", 0, "Current round")
+	flag.Parse()
+	round.initRound(*currentRound)
 	round.generateChallenges()
 	round.printChallenges()
 }
