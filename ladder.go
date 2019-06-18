@@ -90,7 +90,7 @@ func (round *Round) initRound(currentRound int) {
 	i := len(sortedTeams) - 1
 	for _, value := range sortedTeams {
 		descSortedTeams[i] = value
-		i -= 1
+		i--
 	}
 
 	// New teams have the lowest priority.
@@ -104,20 +104,20 @@ func (round *Round) initRound(currentRound int) {
 	round.DescOrder = descSortedTeams
 
 	// 3. Load preferences.
-	raw_prefs := getPrefsFromSpreadsheet()
+	rawPrefs := getPrefsFromSpreadsheet()
 
 	prefs := make(map[string]*ProcessedPreference)
 
-	for _, raw_pref := range raw_prefs {
+	for _, rawPref := range rawPrefs {
 		var pref ProcessedPreference
 
-		pref.Team = raw_pref.Team
-		pref.PrevChallenged = raw_pref.PrevChallenged
-		pref.First = raw_pref.First
-		pref.Second = raw_pref.Second
-		pref.Third = raw_pref.Third
+		pref.Team = rawPref.Team
+		pref.PrevChallenged = rawPref.PrevChallenged
+		pref.First = rawPref.First
+		pref.Second = rawPref.Second
+		pref.Third = rawPref.Third
 
-		switch raw_pref.Accept {
+		switch rawPref.Accept {
 		case "受け付ける":
 			pref.Accept = true
 		case "受け付けない":
@@ -129,14 +129,14 @@ func (round *Round) initRound(currentRound int) {
 			round.Teams[pref.Team].TakenTwo = true
 		}
 
-		switch raw_pref.Challenge {
+		switch rawPref.Challenge {
 		case "行う":
 			pref.Challenge = true
 		case "行わない":
 			pref.Challenge = false
 		}
 
-		switch raw_pref.LastResortPref {
+		switch rawPref.LastResortPref {
 		case "どこにもチャレンジしない":
 			pref.LastResortPref = None
 		case "チャレンジ可能な範囲で一番順位の低いチームにチャレンジする":
@@ -207,9 +207,8 @@ func (round *Round) checkTaken(team string) bool {
 	if teams[team] != nil {
 		if teams[team].Rank > 1 {
 			return teams[team].Taken
-		} else {
-			return teams[team].Taken && teams[team].TakenTwo
 		}
+		return teams[team].Taken && teams[team].TakenTwo
 	}
 	return true
 }
