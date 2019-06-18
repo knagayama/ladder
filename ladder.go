@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 )
 
 const MaxParticipants = 1000
@@ -281,7 +281,7 @@ func (round *Round) challengeMaxRank(challenge *Challenge) {
 	}
 }
 
-func (round *Round) generateChallenges() {
+func (round *Round) generateChallenges(manualAssignLeftover bool) {
 	challenges := make(map[string]*Challenge)
 	teams := round.Teams
 	prefs := round.Prefs
@@ -339,29 +339,59 @@ func (round *Round) generateChallenges() {
 
 	// 2. Give challenges to deferred teams
 
-	for _, challenger := range deferredTeams {
-		if challenger != "" {
-			fmt.Println("Checking opponents for", challenger)
+	if !manualAssignLeftover {
+		for _, challenger := range deferredTeams {
+			if challenger != "" {
+				fmt.Println("Checking opponents for", challenger)
+				var challenge Challenge
+				challenge.Challenger = challenger
+				challenge.ChallengerRank = teams[challenger].Rank
+				challenge.Round = round.Current
+
+				for i := challenge.ChallengerRank - 1; i > 0; i-- {
+					team := ascSortedTeams[i]
+					fmt.Println("Checking if the following team is good:", team)
+					if round.validateMatch(challenger, team, true) == false {
+						fmt.Println("Invalid match.")
+					} else {
+						round.takeTeam(challenger, team, &challenge)
+						break
+					}
+					if i == 1 {
+						fmt.Println("No valid match for", challenger)
+						challenge.ValidMatch = false
+					}
+				}
+				if challenge.ValidMatch == true {
+					challenges[challenger] = &challenge
+				}
+			}
+		}
+	} else {
+		// Manual assign for deferred teams
+		for _, challenger := range deferredTeams {
+			fmt.Println("Manual assign needed for: ", challenger, "@", teams[challenger].Rank)
+			for team := range teams {
+				if round.Teams[team].Taken == false {
+					fmt.Println(team, " is not taken @", round.Teams[team].Rank)
+				}
+				if round.Teams[team].Rank == 1 && round.Teams[team].TakenTwo == false {
+					fmt.Println(team, " is not taken @", round.Teams[team].Rank)
+				}
+			}
 			var challenge Challenge
 			challenge.Challenger = challenger
 			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = round.Current
-
-			for i := challenge.ChallengerRank - 1; i > 0; i-- {
-				team := ascSortedTeams[i]
-				fmt.Println("Checking if the following team is good:", team)
-				if round.validateMatch(challenger, team, true) == false {
-					fmt.Println("Invalid match.")
-				} else {
-					round.takeTeam(challenger, team, &challenge)
-					break
-				}
-				if i == 1 {
-					fmt.Println("No valid match for", challenger)
-					challenge.ValidMatch = false
-				}
+			fmt.Println("Choose team rank to assign for ", challenger)
+			var i int
+			fmt.Scanf("%d", &i)
+			team := ascSortedTeams[i]
+			if round.validateMatch(challenger, team, true) == false {
+				fmt.Println("Invalid match.")
+			} else {
+				round.takeTeam(challenger, team, &challenge)
 			}
-
 			if challenge.ValidMatch == true {
 				challenges[challenger] = &challenge
 			}
@@ -413,8 +443,9 @@ func (round *Round) printChallenges() {
 func main() {
 	var round Round
 	currentRound := flag.Int("round", 0, "Current round")
+	manualAssignLeftover := flag.Bool("manual", false, "Manually assign leftovers")
 	flag.Parse()
 	round.initRound(*currentRound)
-	round.generateChallenges()
+	round.generateChallenges(*manualAssignLeftover)
 	round.printChallenges()
 }
