@@ -9,7 +9,7 @@ const MaxParticipants = 1000
 
 type Round struct {
 	Teams     map[string]*Team
-	NewTeams	[]string
+	NewTeams  []string
 	AscOrder  []string
 	DescOrder []string
 	Prefs     map[string]*ProcessedPreference
