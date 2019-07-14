@@ -382,7 +382,7 @@ func (round *Round) generateChallenges(manualAssignLeftover bool) {
 			challenge.Challenger = challenger
 			challenge.ChallengerRank = teams[challenger].Rank
 			challenge.Round = round.Current
-			fmt.Println("Choose team rank to assign for ", challenger)
+			fmt.Println("Choose team rank to assign for ", challenger, "@", teams[challenger].Rank)
 			var i int
 			fmt.Scanf("%d", &i)
 			team := ascSortedTeams[i]
