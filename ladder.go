@@ -9,6 +9,7 @@ const MaxParticipants = 1000
 
 type Round struct {
 	Teams     map[string]*Team
+	NewTeams  []string
 	AscOrder  []string
 	DescOrder []string
 	Prefs     map[string]*ProcessedPreference
@@ -93,13 +94,11 @@ func (round *Round) initRound(currentRound int) {
 		i--
 	}
 
-	// New teams have the lowest priority.
 	for _, team := range newTeams {
-		teams[team].Rank = len(teams)
 		sortedTeams = append(sortedTeams, team)
-		descSortedTeams = append(descSortedTeams, team)
 	}
 
+	round.NewTeams = newTeams
 	round.AscOrder = sortedTeams
 	round.DescOrder = descSortedTeams
 
@@ -286,9 +285,59 @@ func (round *Round) generateChallenges(manualAssignLeftover bool) {
 	prefs := round.Prefs
 	descSortedTeams := round.DescOrder
 	ascSortedTeams := round.AscOrder
+	newTeams := round.NewTeams
 	var deferredTeams []string
 
-	// 1. Give challenges to teams based on priorities
+	// Give challanges to new teams
+
+	for _, challenger := range newTeams {
+		if challenger != "" && prefs[challenger] != nil && prefs[challenger].Challenge {
+			var challenge Challenge
+			challenge.Challenger = challenger
+			challenge.ChallengerRank = teams[challenger].Rank
+			challenge.Round = round.Current
+
+			fmt.Println("Trying to give a match to", challenger)
+			pref := prefs[challenger]
+
+			if round.validateMatch(challenger, pref.First, true) {
+				fmt.Println("First preference available for", challenger)
+				round.takeTeam(challenger, pref.First, &challenge)
+			} else if round.validateMatch(challenger, pref.Second, true) {
+				fmt.Println("Second preference available for", challenger)
+				round.takeTeam(challenger, pref.Second, &challenge)
+			} else if round.validateMatch(challenger, pref.Third, true) {
+				fmt.Println("Third preference available for", challenger)
+				round.takeTeam(challenger, pref.Third, &challenge)
+			} else {
+				fmt.Println("No preference available, checking last resort for", challenger)
+				// Check for max or min
+				switch pref.LastResortPref {
+				case None:
+					challenge.ValidMatch = false
+					fmt.Println("No valid match for ", challenge.Challenger)
+				case MinRank:
+					// Get the available challengeable team with minimum rank
+					fmt.Println("Min rank opponent preferred.")
+					round.challengeMinRank(&challenge)
+				case MaxRank:
+					fmt.Println("Max rank opponent preferred.")
+					round.challengeMaxRank(&challenge)
+					// Get the available challengeable team with maximum rank
+				case Any:
+					fmt.Println("Willing to challenge anyone.")
+					deferredTeams = append(deferredTeams, challenger)
+				}
+			}
+
+			if challenge.ValidMatch == true {
+				challenges[challenger] = &challenge
+			}
+		}
+	}
+
+
+	// Give challenges to teams based on priorities
 
 	for _, challenger := range descSortedTeams {
 		if challenger != "" && prefs[challenger] != nil && prefs[challenger].Challenge {
@@ -336,9 +385,10 @@ func (round *Round) generateChallenges(manualAssignLeftover bool) {
 		}
 	}
 
-	// 2. Give challenges to deferred teams
+	// Give challenges to deferred teams
 
 	if !manualAssignLeftover {
+		// Auto-assignment for deferred teams
 		for _, challenger := range deferredTeams {
 			if challenger != "" {
 				fmt.Println("Checking opponents for", challenger)
@@ -397,7 +447,7 @@ func (round *Round) generateChallenges(manualAssignLeftover bool) {
 		}
 	}
 
-	// 3. Give MatchCodes accordingly
+	// Give MatchCodes accordingly
 
 	code := 1
 
