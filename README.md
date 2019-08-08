@@ -9,8 +9,6 @@ You need access to the challenge form results spreadsheet.
 
 1. Save credentials.json to the same dir. Easiest way is to get it from https://developers.google.com/sheets/api/quickstart/go
 
-2. Set the currentRound const.
-
-3. $ go run ladder.go spreadheets.go
+2. $ go run ladder.go spreadheets.go --round 1 --manual true
 
 You're done!
