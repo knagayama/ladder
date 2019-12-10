@@ -88,8 +88,8 @@ func getTeamsFromSpreadsheet() map[string]*Team {
 	}
 
 	// Get teams from a preformatted sheet in the challenge form.
-	spreadsheetId := "1p59QIr73RQd9rOJq8e_bobV8rgdC5A52F9IwnhMI8oo"
-	readRange := "teams.json!A2:E"
+	spreadsheetId := "1zEw8Eb2WGzY8nZt_6B5rL9v_6PUW7CUBusvoqccrayQ"
+	readRange := "teams!A2:E"
 	valueRenderOption := "UNFORMATTED_VALUE"
 	resp, err := srv.Spreadsheets.Values.Get(spreadsheetId, readRange).ValueRenderOption(valueRenderOption).Do()
 
@@ -150,8 +150,8 @@ func getPrefsFromSpreadsheet() []RawPreference {
 	}
 
 	// Get prefs from a preformatted sheet in the challenge form.
-	spreadsheetId := "1p59QIr73RQd9rOJq8e_bobV8rgdC5A52F9IwnhMI8oo"
-	readRange := "prefs.json!A2:I"
+	spreadsheetId := "1zEw8Eb2WGzY8nZt_6B5rL9v_6PUW7CUBusvoqccrayQ"
+	readRange := "prefs!A2:I"
 	valueRenderOption := "FORMATTED_VALUE"
 	resp, err := srv.Spreadsheets.Values.Get(spreadsheetId, readRange).ValueRenderOption(valueRenderOption).Do()
 
